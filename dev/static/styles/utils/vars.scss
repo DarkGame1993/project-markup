@@ -1,0 +1,32 @@
+// Colors
+$white: #ffffff;
+$black: #202020;
+
+$green: #F7F7F7;
+$light-green:#B2B2B2;
+$middle-green: #4F4F4F;
+$dark-green: #C2C2C2;
+$blue: #00C8FF;
+
+// Sizes
+$base-font-size: 10px;
+
+$breakpoints: (
+  "phone"       : 400px,
+  "phone-wide"  : 480px,
+  "phablet"     : 560px,
+  "tablet-small": 640px,
+  "tablet"      : 768px,
+  "tablet-wide" : 1024px,
+  "desktop"     : 1248px,
+  "desktop-wide": 1440px
+);
+
+$content-size: 119.8rem;
+
+// breakpoints
+$mobile-size: 470px;
+$large-mobile-size: 520px;
+$tablet-size: 767px;
+$tablet-wide-size: 1024px;
+$desktop-size: 1198px;

@@ -1,0 +1,232 @@
+// header
+.header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background:rgba(255,255,255,0.9);
+  z-index: 10;
+  @include max-1198{
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .container{
+    height: 10.3rem;
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row wrap;
+    align-items: flex-end;
+  }
+  @include max-768{
+    .container{
+      flex-flow: column wrap;
+      align-items: flex-start;
+      justify-content: center;
+      height: 7.3rem;
+    }
+  }
+  &__logotype{
+    @include min-1198{
+      margin-left: -1rem;
+    }
+    &-link {
+      cursor: pointer;
+      position: relative; 
+      display: block; 
+      .svg{
+        height: 4.2rem;
+      }
+      @include min-768 {
+        &:hover .svg path{
+          fill: $black;
+          opacity: .7;
+          transition: .5s;
+        }
+      }
+    }
+  }
+  @include min-768{
+    .burger,
+    .burger-check {
+      display: none;
+    }
+  }
+  @include max-768{
+    $burger--thickness: 4px;
+    .burger {
+      position: absolute;
+      right: 3rem;
+      $width: 2.8rem;
+      display: inline-block;
+      border: 0;
+      background: none;
+      outline: 0;
+      padding: 0;
+      cursor: pointer;
+      border-bottom: $burger--thickness solid currentColor;
+      width: $width;
+      transition: border-bottom 1s ease-in-out;
+      -webkit-transition: border-bottom 1s ease-in-out; 
+
+      // Fix for extra space in Firefox
+      &::-moz-focus-inner {
+        border: 0;
+        padding: 0;
+      }	 
+
+      &:before {
+        content: "";
+        display: block;
+        border-bottom: $burger--thickness solid currentColor;
+        width: 100%;
+        margin-bottom: 5px;
+        transition: transform 0.5s ease-in-out;    
+        -webkit-transition: -webkit-transform 0.5s ease-in-out;        
+      }
+
+      &:after {
+        content: "";
+        display: block;
+        border-bottom: $burger--thickness solid currentColor;
+        width: 100%;
+        margin-bottom: 5px;
+        transition: transform 0.5s ease-in-out;
+        -webkit-transition: -webkit-transform 0.5s ease-in-out;
+      }
+    }
+
+    .burger-check {
+      display: none;
+    }
+  
+    .burger-check:checked ~ .burger {
+      border-bottom: $burger--thickness solid transparent;
+      transition: border-bottom 0.8s ease-in-out;
+      -webkit-transition: border-bottom 0.8s ease-in-out;
+
+      &:before {
+        transform: rotate(-405deg) translateY(1px) translateX(-3px);
+        -webkit-transform: rotate(-405deg) translateY(1px) translateX(-3px);      
+        transition: transform 0.5s ease-in-out;
+        -webkit-transition: -webkit-transform 0.5s ease-in-out;
+      }
+
+      &:after {
+        transform: rotate(405deg) translateY(-4px) translateX(-5px); 
+        -webkit-transform: rotate(405deg) translateY(-4px) translateX(-5px);       
+        transition: transform 0.5s ease-in-out;
+        -webkit-transition: -webkit-transform 0.5s ease-in-out;
+      }
+    }
+    nav {
+      overflow: hidden;
+      max-height: 0;
+      position: absolute;
+      top: 7rem;
+      left: 0;
+      transition: max-height 0.5s ease-in-out;
+      @include max-768{
+        display: flex;
+        width: 100%;
+        flex-flow: wrap row;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+    }
+    
+    .burger-check:checked ~ nav {
+      overflow: inherit;
+      max-height: 30rem;
+      transition: max-height 0.5s ease-in-out;
+    }
+  }
+  .menu__list{
+    display: flex;
+    flex-flow: row wrap;
+    margin-bottom: 2.5px;
+    @include max-768{
+      background: $white;
+      flex-flow: column wrap;
+      width: 100%;
+      align-items: center;
+    }
+    &-item{
+      margin-right: 4.1rem;
+      color: $black;
+      @include max-768 {
+        margin-right: 0;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+      }
+      &:last-of-type{
+        margin-right: 0;
+      }
+      a{
+        font-style: normal;
+        font-weight: normal;
+        font-size: 1.6rem;
+        line-height: normal;
+        color: $black;
+        text-decoration-color: $blue!important;
+        @include min-768{
+          &:hover{
+            color: $blue;
+            text-decoration: underline;
+            text-decoration-color: $blue;
+          }
+        }
+      }
+      &:last-child a{
+        overflow: hidden;
+        display: flex;
+        width: 10rem;
+        height: 2.4rem;
+        color: $white!important;
+        align-items: center;
+        justify-content: center;
+        background: $blue;
+        border-radius: 1rem;
+        color: $white;
+        line-height: normal;
+        text-align: center;
+        @include max-768 {
+          font-size: 1.6rem;
+          width: 10rem;
+          height: 2.4rem;
+        }
+        @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+          background: $blue!important;
+        }
+        @include min-768{
+          background-image: linear-gradient(135deg, #36424D 50%, #00C8FF 50%);
+          -webkit-background-clip: text;
+          position: relative;
+          &:after{
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-image: linear-gradient(45deg, rgba(0,200,225,1) 50%, rgba(54,66,77,1) 50%, rgba(54,66,77,1) 0%, rgba(0,200,225,1) 100%);
+            z-index: -1;
+            background-size: 300%;
+            background-position: left;
+            transition: 1s;
+          }
+          &:hover,
+          &:hover:after{
+            text-decoration: none;
+            background-position: right;
+          }
+        }
+      }
+    }
+  }
+  @include min-768{
+    .active a{
+      color: $blue;
+    }
+  }
+}
